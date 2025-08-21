@@ -113,6 +113,7 @@ luaL_Reg GlobalMethods[] =
     { "GetGUIDLow", &LuaGlobalFunctions::GetGUIDLow },
     { "GetGUIDType", &LuaGlobalFunctions::GetGUIDType },
     { "GetGUIDEntry", &LuaGlobalFunctions::GetGUIDEntry },
+    { "GetPackedGUIDSize", &LuaGlobalFunctions::GetPackedGUIDSize },
     { "GetAreaName", &LuaGlobalFunctions::GetAreaName },
     { "GetOwnerHalaa", &LuaGlobalFunctions::GetOwnerHalaa },
     { "bit_not", &LuaGlobalFunctions::bit_not },
@@ -543,6 +544,7 @@ ElunaRegister<Player> PlayerMethods[] =
     { "GetPlayerSettingValue", &LuaPlayer::GetPlayerSettingValue },
     { "GetTrader", &LuaPlayer::GetTrader },
     { "GetBonusTalentCount", &LuaPlayer::GetBonusTalentCount },
+    { "GetKnownTaxiNodes", &LuaPlayer::GetKnownTaxiNodes },
 
     // Setters
     { "AdvanceSkillsToMax", &LuaPlayer::AdvanceSkillsToMax },
@@ -559,6 +561,7 @@ ElunaRegister<Player> PlayerMethods[] =
     { "SetLifetimeKills", &LuaPlayer::SetLifetimeKills },
     { "SetGameMaster", &LuaPlayer::SetGameMaster },
     { "SetGMChat", &LuaPlayer::SetGMChat },
+    { "SetKnownTaxiNodes", &LuaPlayer::SetKnownTaxiNodes },
     { "SetTaxiCheat", &LuaPlayer::SetTaxiCheat },
     { "SetGMVisible", &LuaPlayer::SetGMVisible },
     { "SetPvPDeath", &LuaPlayer::SetPvPDeath },
@@ -785,6 +788,7 @@ ElunaRegister<Creature> CreatureMethods[] =
     { "GetShieldBlockValue", &LuaCreature::GetShieldBlockValue },
     { "GetDBTableGUIDLow", &LuaCreature::GetDBTableGUIDLow },
     { "GetCreatureFamily", &LuaCreature::GetCreatureFamily },
+    { "GetReactState", &LuaCreature::GetReactState },
 
     // Setters
     { "SetRegeneratingHealth", &LuaCreature::SetRegeneratingHealth },
@@ -1188,6 +1192,7 @@ ElunaRegister<WorldPacket> PacketMethods[] =
     { "ReadLong", &LuaPacket::ReadLong },
     { "ReadULong", &LuaPacket::ReadULong },
     { "ReadGUID", &LuaPacket::ReadGUID },
+    { "ReadPackedGUID", &LuaPacket::ReadPackedGUID },
     { "ReadString", &LuaPacket::ReadString },
     { "ReadFloat", &LuaPacket::ReadFloat },
     { "ReadDouble", &LuaPacket::ReadDouble },
@@ -1200,6 +1205,7 @@ ElunaRegister<WorldPacket> PacketMethods[] =
     { "WriteLong", &LuaPacket::WriteLong },
     { "WriteULong", &LuaPacket::WriteULong },
     { "WriteGUID", &LuaPacket::WriteGUID },
+    { "WritePackedGUID", &LuaPacket::WritePackedGUID },
     { "WriteString", &LuaPacket::WriteString },
     { "WriteFloat", &LuaPacket::WriteFloat },
     { "WriteDouble", &LuaPacket::WriteDouble },

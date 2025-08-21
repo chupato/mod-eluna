@@ -469,6 +469,20 @@ namespace LuaGlobalFunctions
     }
 
     /**
+     * Returns the byte size in bytes (2-9) of the ObjectGuid when packed.
+     *
+     * @param ObjectGuid guid : the ObjectGuid to get packed size for
+     * @return number size
+     */
+    int GetPackedGUIDSize(lua_State* L)
+    {
+        ObjectGuid guid = Eluna::CHECKVAL<ObjectGuid>(L, 1);
+        PackedGuid packedGuid(guid);
+        Eluna::Push(L, static_cast<int>(packedGuid.size()));
+        return 1;
+    }
+
+    /**
      * Returns the area or zone's name.
      *
      *     enum LocaleConstant
@@ -1716,7 +1730,7 @@ namespace LuaGlobalFunctions
                 delete creature;
                 creature = new Creature();
 
-                if (!creature->LoadFromDB(db_guid, map, true))
+                if (!creature->LoadCreatureFromDB(db_guid, map, true, true))
                 {
                     delete creature;
                     Eluna::Push(L);
@@ -1786,7 +1800,7 @@ namespace LuaGlobalFunctions
 
                 object = new GameObject();
                 // this will generate a new lowguid if the object is in an instance
-                if (!object->LoadFromDB(guidLow, map))
+                if (!object->LoadGameObjectFromDB(guidLow, map, true))
                 {
                     delete object;
                     Eluna::Push(L);
